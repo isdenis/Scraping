@@ -10,7 +10,7 @@ page = 0
 page_count = 1
 while int(page) < int(page_count):
 
-    params = {'text': 'java',
+    params = {'text': 'python',
               'area': '76',  # 76 - Ростов-на-Дону, 1 - Москва
               'page': page}
 
