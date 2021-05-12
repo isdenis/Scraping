@@ -1,5 +1,3 @@
-# текст письма полный
-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -14,25 +12,24 @@ main_link = 'https://mail.ru/'
 driver.get(main_link)
 
 login = driver.find_element_by_xpath("//div/input[@name = 'login']")
-login.send_keys('d_e_s_h_a@mail.ru') # study.ai_172@mail.ru
+login.send_keys('') # study.ai_172@mail.ru
 login.send_keys(Keys.ENTER)
 time.sleep(1)
 password = driver.find_element_by_xpath("//div/input[@name = 'password']")
-password.send_keys('ufkz1989') #o%IyneXIrI11
+password.send_keys('') #o%IyneXIrI11
 password.send_keys(Keys.ENTER)
 
 time.sleep(3)
 
 # берем общее количество писем. Здесь иногда выходит кол-во писем, иногда идет просто "Входящие" и все.
 mail_count = driver.find_element_by_xpath("//a[@href = '/inbox/']")
-#m2 = mail_count.get_attribute('title').split(',')
-m2 = 10
+mail_count = int(mail_count.get_attribute('title').split(' ')[1])
 
 
 def get_link():
     get_links = set()
     actions = ActionChains(driver)
-    while len(get_links) < m2:
+    while len(get_links) < mail_count:
         try:
             time.sleep(3)
             letters = driver.find_elements_by_xpath("//a[contains(@class, 'js-letter-list-item')]")
@@ -40,11 +37,8 @@ def get_link():
             actions.perform()
             letters = driver.find_elements_by_xpath("//a[contains(@class, 'js-letter-list-item')]")
             for i in letters:
-                #if i is not None:
                 get_links.add(i.get_attribute('href'))
                 print(len(get_links))
-                #else:
-                   # continue
         except:
             break
     return get_links
