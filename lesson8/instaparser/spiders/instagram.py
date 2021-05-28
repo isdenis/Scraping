@@ -14,8 +14,8 @@ class InstagramSpider(scrapy.Spider):
     name = 'instagram'
     allowed_domains = ['instagram.com']
     start_urls = ['https://www.instagram.com/']
-    insta_login = 'denisdenis4637'
-    insta_pwd = '#PWD_INSTAGRAM_BROWSER:9:1622055790:AVdQAADyyq9sQAVMopxTYxQ8GuIQ93WH5cwwqfR32S52hMUPtXlQOMfC8/z8I+qUMHpan/XyjhNMRH/LG7aIUXMWrVjfgAVMIZFL/SDFNaQpd8ecVWhskDjWCMh9UAgN/UpVxZ99B5k3UeM='
+    insta_login = ''
+    insta_pwd = ''
     inst_login_link = 'https://www.instagram.com/accounts/login/ajax/'
     parse_user = ['ai_machine_learning', 'rostov_remont.161', 'rem_stroy_don']
     graphql_url = 'https://www.instagram.com/graphql/query/?'
